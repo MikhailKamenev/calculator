@@ -25,8 +25,21 @@ public class Controller {
         return this.serviceNumber.sum(num1, num2);
     }
 
-    @GetMapping("/subtraction")
-    public double subtraction(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
-        return this.serviceNumber.subtraction(num1, num2);
+    @GetMapping("/subtract")
+    public double subtract(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
+        return this.serviceNumber.subtract(num1, num2);
+    }
+
+    @GetMapping("/multiply")
+    public double multiply(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
+        return this.serviceNumber.multiply(num1, num2);
+    }
+
+    @GetMapping("/divide")
+    public double divide(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
+        if (num2 == 0 || num1 == null || num2 == null) {
+            throw new IllegalArgumentException();
+        }
+        return this.serviceNumber.divide(num1, num2);
     }
 }
