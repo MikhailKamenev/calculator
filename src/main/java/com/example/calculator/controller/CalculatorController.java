@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/calculate")
-public class Controller {
+public class CalculatorController {
     private final ServiceNumber serviceNumber;
 
-    public Controller(ServiceNumber serviceNumber) {
+    public CalculatorController(ServiceNumber serviceNumber) {
         this.serviceNumber = serviceNumber;
     }
 
@@ -21,25 +21,22 @@ public class Controller {
     }
 
     @GetMapping("/sum")
-    public double sum(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
+    public String sum(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
         return this.serviceNumber.sum(num1, num2);
     }
 
     @GetMapping("/subtract")
-    public double subtract(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
+    public String subtract(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
         return this.serviceNumber.subtract(num1, num2);
     }
 
     @GetMapping("/multiply")
-    public double multiply(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
+    public String multiply(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
         return this.serviceNumber.multiply(num1, num2);
     }
 
     @GetMapping("/divide")
-    public double divide(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
-        if (num2 == 0 || num1 == null || num2 == null) {
-            throw new IllegalArgumentException();
-        }
+    public String divide(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
         return this.serviceNumber.divide(num1, num2);
     }
 }
